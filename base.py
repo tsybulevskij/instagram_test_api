@@ -18,7 +18,7 @@ class ParseRecordsFollowingUsers(InstagramAPI):
     @staticmethod
     def write_to_csv(user_names):
         """
-        Write suer names to csv file
+        Write user names to csv file
         """
         with open('instagram_users.csv', 'w', newline='') as csvfile:
             user_writer = csv.writer(csvfile, delimiter=' ', quotechar='|',
