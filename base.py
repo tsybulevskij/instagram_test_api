@@ -45,16 +45,19 @@ class ParseRecordsFollowingUsers(InstagramAPI):
         """
         unfollow_usersnames = []
 
-        if os.path.isfile(filename):
-            with open(filename, newline='') as csvfile:
-                user_reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
-                for user_name in user_reader:
-                    unfollow_usersnames.append(user_name[0])
-            unfollow_user_ids = self.find_user_id(unfollow_usersnames)
-            for user_id in unfollow_user_ids:
-                self.unfollow(user_id)
-        else:
-            print('file for unfollow does not exist')
+        if filename:
+            if os.path.isfile(filename):
+                with open(filename, newline='') as csvfile:
+                    user_reader = csv.reader(csvfile,
+                                             delimiter=' ',
+                                             quotechar='|')
+                    for user_name in user_reader:
+                        unfollow_usersnames.append(user_name[0])
+                unfollow_user_ids = self.find_user_id(unfollow_usersnames)
+                for user_id in unfollow_user_ids:
+                    self.unfollow(user_id)
+            else:
+                print('file for unfollow does not exist')
 
 
 if __name__ == '__main__':

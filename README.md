@@ -1,5 +1,9 @@
 ## Installation
-For installing application follow this steps:
-    1. install environment ```virtualenv -p python3 .env```
-    2. activate environment ```. .env/bin/activate```
-    3. install requirements.txt ```pip install requirements.txt```
+For installing application follow this steps:  
+
+    1. Install environment ```virtualenv -p python3 .env```  
+
+    2. Activate environment ```. .env/bin/activate```  
+
+    3. Install requirements.txt ```pip install requirements.txt```  
+
