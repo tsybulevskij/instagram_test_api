@@ -15,11 +15,11 @@ class ParseRecordsFollowingUsers(InstagramAPI):
         user_names = [user['username'] for user in self.users]
         return user_names
 
-    def write_to_csv(self):
+    @staticmethod
+    def write_to_csv(user_names):
         """
-        Get following user names and write to csv file
+        Write suer names to csv file
         """
-        user_names = self.get_following_users()
         with open('instagram_users.csv', 'w', newline='') as csvfile:
             user_writer = csv.writer(csvfile, delimiter=' ', quotechar='|',
                                      quoting=csv.QUOTE_MINIMAL)
@@ -57,12 +57,12 @@ class ParseRecordsFollowingUsers(InstagramAPI):
             print('file for unfollow does not exist')
 
 
-
 if __name__ == '__main__':
     username = input('enter username: ')
     password = input('enter password: ')
     unfollow_csv = input('enter file name for unfollow: ')
     api = ParseRecordsFollowingUsers(username=username, password=password)
     api.login()
-    api.write_to_csv()
+    user_names = api.get_following_users()
+    api.write_to_csv(user_names)
     api.unfollow_users(unfollow_csv)
